@@ -1,3 +1,55 @@
-<div>
+<div class="row">
+    <div class="col-md-12">
+        <fieldset>
+            <legend>form 表单</legend>
+            <form class="form-horizontal" name="assetsFormEdit" novalidate="novalidate">
+                <div class="form-group" ng-class="getErrorClass(assetsFormEdit.ipv4).class">
+                    <label class="col-sm-2 control-label title" for="assets-ipv4"><i class="icon-required">*</i>ip地址：</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" id="assets-ipv4" ng-model="asset.ipv4" name="ipv4" required ng-pattern="/^([0-9]|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.([0-9]|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.([0-9]|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.([0-9]|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])$/"/>
+                    </div>
+                    <div class="col-sm-5">
+                    <span class="comments" ng-show="getErrorClass(assetsFormEdit.ipv4).show">
+                        <span ng-show="showErrorMsg(assetsFormEdit.ipv4,'required')" >必填项</span>
+                        <span ng-show="showErrorMsg(assetsFormEdit.ipv4,'pattern')" >格式不正确</span>
+                    </span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="getErrorClass(assetsFormEdit.assetsAlias).class">
+                    <label class="col-sm-2 control-label title" for="assets-alias" >别名</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" id="assets-alias" ng-model="asset.alias" name="assetsAlias" ng-maxlength="20"/>
+                    </div>
+                    <div class="col-sm-5">
+                    <span class="comments" ng-show="getErrorClass(assetsFormEdit.assetsAlias).show">
+                        <span ng-show="showErrorMsg(assetsFormEdit.assetsAlias,'maxlength')" >长度不能超过20个字符</span>
+                    </span>
+                    </div>
+                </div>
 
+                <div class="form-group" ng-class="getErrorClass(assetsFormEdit.assetsPower).class">
+                    <label class="col-sm-2 control-label title" for="weight"><i class="icon-required">*</i>权重</label>
+                    <div class="col-sm-3">
+                        <select class="form-control form-select" ng-model="asset.weight" name="assetsPower" id="weight" required ng-options="weight.name for weight in weights track by weight.id">
+                            <option value="" >-- 请选择 --</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-5">
+                    <span class="comments" ng-show="getErrorClass(assetsFormEdit.assetsPower).show">
+                        <span ng-show="showErrorMsg(assetsFormEdit.assetsPower, 'required')" >必填项，请选择</span>
+                    </span>
+                    </div>
+                </div>
+
+                <p>{{asset}}</p>
+
+                <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <a class="btn btn-primary" ng-class="{true:'',false:'disabled'}[!assetsFormEdit.$pristine && assetsFormEdit.$valid]" ng-click="!assetsFormEdit.$pristine && assetsFormEdit.$valid && assetsEditSubmit();" >确定</a>
+                    <a class="btn btn-default" href="#/cancel" >取消</a>
+                </div>
+            </div>
+            </form>
+        </fieldset>
+    </div>
 </div>

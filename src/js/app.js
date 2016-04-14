@@ -5,14 +5,12 @@ angular.module('angularGo',['ngRoute']).
     config(function($routeProvider){
         $routeProvider
             .when('/',{
-                controller:"indexCtrl",
-                templateUrl:'home.html',
-                publicAccess: true
+                controller: "homeCtrl",
+                templateUrl: 'home.html'
             })
-            .when('form',{
-                controller:"formCtrl",
-                templateUrl:'form.html',
-                publicAccess: true
+            .when('/form',{
+                controller: "formCtrl",
+                templateUrl: 'form.html'
             })
             .otherwise({
                 redirectTo: '/'
