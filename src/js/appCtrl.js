@@ -7,7 +7,9 @@ angular.module('angularGo')
     }])
     .controller('formCtrl', ['$scope', function($scope){
         $scope.asset = {
-            weight : {name:'中',id:'2',description:'means important.'}
+            weight : {name:'中',id:'2',description:'means important.'},
+            ipType: 'ipv4',
+            noticeWay: [false,false,false,'sysMsg']
         };
         $scope.weights = [
             {name:'高',id:'1',description:'means very important.'}
@@ -27,7 +29,11 @@ angular.module('angularGo')
             if(inputName.$dirty && inputName.$error[error]){
                 this.show = true;
             }
-            return this;
+            return this.show;
+        };
+        $scope.editSubmit = function(){
+            console.dir($scope.asset);
+            alert("submit button was clicked!");
         };
     }])
 ;
