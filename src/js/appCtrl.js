@@ -36,4 +36,8 @@ angular.module('angularGo')
             alert("submit button was clicked!");
         };
     }])
+
+    .controller('dataPrefixCtrl', ['$scope', function($scope){
+
+    }])
 ;

@@ -12,6 +12,10 @@ angular.module('angularGo',['ngRoute']).
                 controller: "formCtrl",
                 templateUrl: 'form.html'
             })
+            .when('/data-prefix',{
+                controller: "dataPrefixCtrl",
+                templateUrl: 'dataPrefix.html'
+            })
             .otherwise({
                 redirectTo: '/'
             });
